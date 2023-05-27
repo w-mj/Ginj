@@ -81,7 +81,7 @@ func (l *HandlerInputList) BuildInputValues(c *gin.Context) []reflect.Value {
 		if t.Kind() == reflect.Pointer {
 			value.Set(reflect.New(t.Elem()))
 		} else {
-			value.Set(reflect.New(t).Elem())
+			value = reflect.New(t).Elem()
 		}
 		if value.Type().String() == reflect.TypeOf(&gin.Context{}).String() {
 			value.Set(reflect.ValueOf(c))
