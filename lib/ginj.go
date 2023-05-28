@@ -18,11 +18,11 @@ func New(engine *gin.Engine) *GinjInstance {
 	}
 }
 
-// Handle /**
+// Route /**
 /**
 annotation: GET /admin/data?UserName&Page=val:positive&User=map:mapFunc
 */
-func (ins *GinjInstance) Handle(annotation string, handler any) {
+func (ins *GinjInstance) Route(annotation string, handler any) {
 	space := strings.Index(annotation, " ")
 	if space <= 0 {
 		panic("Illegal annotation: " + annotation)
@@ -108,4 +108,10 @@ func AddAnnotatedRoute(anno string, handler any) {
 		Anno:    anno,
 		Handler: handler,
 	})
+}
+
+func (ins *GinjInstance) LoadAnnotatedRote() {
+	for _, k := range annoHandlerList {
+		ins.Route(k.Anno, k.Handler)
+	}
 }

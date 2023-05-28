@@ -50,6 +50,9 @@ func (l *HandlerInputList) AddInput(name string, typ reflect.Type, tagStr string
 	}
 	tags := strings.Split(tagStr, ",")
 	for _, t := range tags {
+		if len(strings.TrimSpace(t)) == 0 {
+			continue
+		}
 		switch t {
 		case "payload":
 			input.Position = InputPositionPayload
