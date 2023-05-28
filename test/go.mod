@@ -1,8 +1,13 @@
-module github.com/w-mj/ginj
+module test
 
 go 1.20
 
-require github.com/gin-gonic/gin v1.9.0
+replace github.com/w-mj/ginj v0.0.1 => ../
+
+require (
+	github.com/gin-gonic/gin v1.9.0
+	github.com/w-mj/ginj v0.0.1
+)
 
 require (
 	github.com/bytedance/sonic v1.9.0 // indirect

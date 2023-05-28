@@ -95,3 +95,17 @@ func wrapperFunction(inputList *HandlerInputList, handler any) func(ctx *gin.Con
 		processHandlerOuts(ctx, outs)
 	}
 }
+
+type annoHandler struct {
+	Anno    string
+	Handler any
+}
+
+var annoHandlerList []annoHandler
+
+func AddAnnotatedRoute(anno string, handler any) {
+	annoHandlerList = append(annoHandlerList, annoHandler{
+		Anno:    anno,
+		Handler: handler,
+	})
+}

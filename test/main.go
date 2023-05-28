@@ -13,6 +13,11 @@ func MyHandler(abc int, def string) (map[string]any, error) {
 	return ans, nil
 }
 
+// @Ginj: GET /index?abc&def
+func AnnotateHandler(abc int, def string) (map[string]any, error) {
+	return MyHandler(abc, def)
+}
+
 func main() {
 	r := gin.Default()
 	j := lib.New(r)
